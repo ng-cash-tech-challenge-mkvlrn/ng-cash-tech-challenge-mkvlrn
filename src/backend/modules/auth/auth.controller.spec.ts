@@ -91,7 +91,7 @@ describe('auth.controller.ts', () => {
       _res: Response,
       next: NextFunction,
     ) => {
-      req.user = { id: 'userId', username: 'username' };
+      req.user = { id: 'userId', username: 'username', accountId: 'accountId' };
       next();
     };
     const sut = new AuthController(createMock(), createMock(), createMock());
@@ -100,6 +100,10 @@ describe('auth.controller.ts', () => {
     const response = await supertest(app).post('/').send();
 
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ id: 'userId', username: 'username' });
+    expect(response.body).toEqual({
+      id: 'userId',
+      username: 'username',
+      accountId: 'accountId',
+    });
   });
 });
