@@ -27,6 +27,7 @@ const frontendConfig: Config = {
 };
 
 const config: Config = {
+  maxWorkers: 1,
   passWithNoTests: true,
   preset: 'ts-jest',
   testRegex: '.spec.(ts|tsx)$',
