@@ -3,7 +3,7 @@ import { hash } from 'argon2';
 import { randomUUID } from 'crypto';
 import { injectable } from 'tsyringe';
 
-import { CreateUserDto } from '#/backend/modules/users/dtos/create-user.dto';
+import { CreateUserDto } from '#/backend/modules/auth/dtos/create-user.dto';
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
 @injectable()

@@ -3,7 +3,7 @@ import { verify } from 'argon2';
 import { sign } from 'jsonwebtoken';
 import { injectable } from 'tsyringe';
 
-import { CreateUserDto } from '#/backend/modules/users/dtos/create-user.dto';
+import { CreateUserDto } from '#/backend/modules/auth/dtos/create-user.dto';
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 import { Envs } from '#/backend/server/Envs';
 

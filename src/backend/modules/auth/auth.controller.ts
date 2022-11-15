@@ -2,11 +2,11 @@ import { Response } from 'express';
 import { injectable } from 'tsyringe';
 
 import { CustomRequest } from '#/backend/interfaces/CustomRequest';
+import { CreateUserDto } from '#/backend/modules/auth/dtos/create-user.dto';
+import { RegisterResponseDto } from '#/backend/modules/auth/dtos/register-response.dto';
 import { CreateUserService } from '#/backend/modules/auth/services/create-user.service';
 import { UserLoginService } from '#/backend/modules/auth/services/user-login.service';
 import { UserLogoutService } from '#/backend/modules/auth/services/user-logout.service';
-import { CreateUserDto } from '#/backend/modules/users/dtos/create-user.dto';
-import { RegisterResponseDto } from '#/backend/modules/users/dtos/register-response.dto';
 import { Envs } from '#/backend/server/Envs';
 
 @injectable()

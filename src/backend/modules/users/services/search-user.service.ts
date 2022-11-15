@@ -11,7 +11,6 @@ export class SearchUserService {
         where: { username: { contains: input } },
       });
     } catch (err) {
-      if (err instanceof AppError) throw err;
       throw new AppError(AppErrorType.INTERNAL, (err as Error).message);
     }
   };
