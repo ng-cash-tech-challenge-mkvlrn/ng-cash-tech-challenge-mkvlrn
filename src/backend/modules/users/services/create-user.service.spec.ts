@@ -40,7 +40,7 @@ describe('CreateUserService.ts', () => {
       createMock<PrismaClient>({
         user: {
           findUnique: jest.fn().mockResolvedValue({
-            username: 'uesrname',
+            username: 'username',
           }),
         },
       }),
@@ -48,7 +48,7 @@ describe('CreateUserService.ts', () => {
 
     const act = () =>
       sut.execute({
-        username: 'uesrname',
+        username: 'username',
         password: '12345678',
       });
 
@@ -74,7 +74,7 @@ describe('CreateUserService.ts', () => {
 
     const act = () =>
       sut.execute({
-        username: 'uesrname',
+        username: 'username',
         password: '12345678',
       });
 
