@@ -9,7 +9,7 @@ import { AppError } from '#/backend/server/AppError';
 
 jest.mock('jsonwebtoken', () => ({ verify: jest.fn(), decode: jest.fn() }));
 
-describe('UserLogoutService.ts', () => {
+describe('user-logout.service.ts', () => {
   test('success', async () => {
     const decodeSpy = jest
       .spyOn(jsonwebtoken, 'decode')

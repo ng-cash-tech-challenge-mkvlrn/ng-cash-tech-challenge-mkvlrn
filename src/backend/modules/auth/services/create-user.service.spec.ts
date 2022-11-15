@@ -9,7 +9,7 @@ import { AppError } from '#/backend/server/AppError';
 
 jest.mock('argon2', () => ({ hash: jest.fn() }));
 
-describe('CreateUserService.ts', () => {
+describe('create-user.service.ts', () => {
   test('success', async () => {
     const hashSpy = jest.spyOn(argon2, 'hash');
 

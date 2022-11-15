@@ -11,7 +11,7 @@ import { AppError } from '#/backend/server/AppError';
 jest.mock('argon2', () => ({ hash: jest.fn(), verify: jest.fn() }));
 jest.mock('jsonwebtoken', () => ({ sign: jest.fn() }));
 
-describe('UserLoginService.ts', () => {
+describe('user-login.service.ts', () => {
   test('success', async () => {
     const verifySpy = jest.spyOn(argon2, 'verify').mockResolvedValue(true);
     const signSpy = jest
