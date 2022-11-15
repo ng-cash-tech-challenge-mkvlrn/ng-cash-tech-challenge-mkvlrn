@@ -73,7 +73,7 @@ describe('auth.controller.ts', () => {
     expect(response.body).toEqual({
       id: 'transactionId',
       cashFlow: 'OUT',
-      to: '@creditedUsername',
+      to: 'creditedUsername',
       value: 5,
     });
   });

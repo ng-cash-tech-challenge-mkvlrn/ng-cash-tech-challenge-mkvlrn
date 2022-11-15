@@ -25,10 +25,10 @@ export class CashoutResponseDto {
 
     if (currentUser === debited.id) {
       this.cashFlow = 'OUT';
-      this.to = `@${credited.username}`;
+      this.to = credited.username;
     } else {
       this.cashFlow = 'IN';
-      this.from = `@${debited.username}`;
+      this.from = debited.username;
     }
   }
 }
