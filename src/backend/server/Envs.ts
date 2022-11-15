@@ -7,7 +7,7 @@ export abstract class Envs {
 
   static JWT_SECRET: string;
 
-  static JWT_EXPIRATION: number;
+  static JWT_EXPIRATION: string;
 
   static autoLoadEnv = (() => {
     Object.assign(this, env.parsed);
