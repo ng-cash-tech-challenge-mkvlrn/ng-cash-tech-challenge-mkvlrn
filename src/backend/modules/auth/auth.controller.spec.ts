@@ -6,7 +6,7 @@ import 'reflect-metadata';
 import supertest from 'supertest';
 
 import { CustomRequest } from '#/backend/interfaces/CustomRequest';
-import { AuthController } from '#/backend/modules/users/auth.controller';
+import { AuthController } from '#/backend/modules/auth/auth.controller';
 import { CreateUserService } from '#/backend/modules/users/services/create-user.service';
 import { UserLoginService } from '#/backend/modules/users/services/user-login.service';
 import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
