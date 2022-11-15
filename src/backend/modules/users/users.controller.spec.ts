@@ -11,6 +11,10 @@ import { UserLoginService } from '#/backend/modules/users/services/user-login.se
 import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
 import { UsersController } from '#/backend/modules/users/users.controller';
 
+jest.mock('dotenv', () => ({
+  config: jest.fn().mockReturnValue({ parsed: { JWT_EXPIRATION: 3600 } }),
+}));
+
 describe('users.controller.ts', () => {
   let app: Application;
 
@@ -52,7 +56,7 @@ describe('users.controller.ts', () => {
     expect(response.body).toEqual({ success: true });
     expect(response.headers['set-cookie']).toHaveLength(1);
     expect(response.headers['set-cookie'][0]).toMatch(
-      /^accessToken=accessToken; Max-Age=86400; Path=\//,
+      /^accessToken=accessToken; Max-Age=3600; Path=\//,
     );
   });
 
@@ -67,7 +71,7 @@ describe('users.controller.ts', () => {
 
     const response = await supertest(app)
       .post('/')
-      .set('Cookie', ['accessToken=accessToken; Max-Age=86400; Path=/'])
+      .set('Cookie', ['accessToken=accessToken; Max-Age=3600; Path=/'])
       .send();
 
     expect(response.status).toBe(200);
