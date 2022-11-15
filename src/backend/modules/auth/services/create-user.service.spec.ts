@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import * as argon2 from 'argon2';
 import 'reflect-metadata';
 
-import { CreateUserService } from '#/backend/modules/users/services/create-user.service';
+import { CreateUserService } from '#/backend/modules/auth/services/create-user.service';
 import { AppError } from '#/backend/server/AppError';
 
 jest.mock('argon2', () => ({ hash: jest.fn() }));

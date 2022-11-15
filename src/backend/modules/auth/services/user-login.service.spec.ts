@@ -5,7 +5,7 @@ import * as argon2 from 'argon2';
 import * as jsonwebtoken from 'jsonwebtoken';
 import 'reflect-metadata';
 
-import { UserLoginService } from '#/backend/modules/users/services/user-login.service';
+import { UserLoginService } from '#/backend/modules/auth/services/user-login.service';
 import { AppError } from '#/backend/server/AppError';
 
 jest.mock('argon2', () => ({ hash: jest.fn(), verify: jest.fn() }));

@@ -7,9 +7,9 @@ import supertest from 'supertest';
 
 import { CustomRequest } from '#/backend/interfaces/CustomRequest';
 import { AuthController } from '#/backend/modules/auth/auth.controller';
-import { CreateUserService } from '#/backend/modules/users/services/create-user.service';
-import { UserLoginService } from '#/backend/modules/users/services/user-login.service';
-import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
+import { CreateUserService } from '#/backend/modules/auth/services/create-user.service';
+import { UserLoginService } from '#/backend/modules/auth/services/user-login.service';
+import { UserLogoutService } from '#/backend/modules/auth/services/user-logout.service';
 
 jest.mock('dotenv', () => ({
   config: jest.fn().mockReturnValue({ parsed: { JWT_EXPIRATION: 3600 } }),

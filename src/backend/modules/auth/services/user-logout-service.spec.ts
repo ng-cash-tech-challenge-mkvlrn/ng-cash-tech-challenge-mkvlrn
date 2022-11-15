@@ -4,7 +4,7 @@ import Redis from 'ioredis';
 import * as jsonwebtoken from 'jsonwebtoken';
 import 'reflect-metadata';
 
-import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
+import { UserLogoutService } from '#/backend/modules/auth/services/user-logout.service';
 import { AppError } from '#/backend/server/AppError';
 
 jest.mock('jsonwebtoken', () => ({ verify: jest.fn(), decode: jest.fn() }));
