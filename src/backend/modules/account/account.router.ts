@@ -5,6 +5,7 @@ import { Authentication } from '#/backend/middlewares/Authentication';
 import { Validation } from '#/backend/middlewares/Validation';
 import { AccountController } from '#/backend/modules/account/account.controller';
 import { CashoutInputDto } from '#/backend/modules/account/dtos/cashout-input.dto';
+import { GetTransactionsQueryDto } from '#/backend/modules/account/dtos/get-transactions-query.dto';
 
 @injectable()
 export class AccountRouter {
@@ -25,6 +26,10 @@ export class AccountRouter {
       this.controller.cashOut,
     );
 
-    this.routes.get('/transactions', this.controller.getTransactions);
+    this.routes.get(
+      '/transactions',
+      this.validator.validate(undefined, GetTransactionsQueryDto),
+      this.controller.getTransactions,
+    );
   }
 }

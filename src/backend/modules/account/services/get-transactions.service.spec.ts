@@ -14,8 +14,12 @@ describe('get-transactions.service.ts', () => {
     );
 
     const result = await sut.execute('accountId');
+    const resul2 = await sut.execute('accountId', 'OUT');
+    const result3 = await sut.execute('accountId', 'IN');
 
     expect(result).toEqual([]);
+    expect(resul2).toEqual([]);
+    expect(result3).toEqual([]);
   });
 
   test('fail - orm/database error', async () => {
