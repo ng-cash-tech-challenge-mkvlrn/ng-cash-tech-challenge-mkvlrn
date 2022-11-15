@@ -18,5 +18,11 @@ export class AuthRouter {
       this.validator.validate(CreateUserDto),
       this.controller.register,
     );
+
+    this.routes.post(
+      '/login',
+      this.validator.validate(CreateUserDto),
+      this.controller.login,
+    );
   }
 }
