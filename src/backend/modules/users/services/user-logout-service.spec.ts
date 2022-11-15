@@ -2,6 +2,7 @@
 import { createMock } from '@golevelup/ts-jest';
 import Redis from 'ioredis';
 import * as jsonwebtoken from 'jsonwebtoken';
+import 'reflect-metadata';
 
 import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
 import { AppError } from '#/backend/server/AppError';

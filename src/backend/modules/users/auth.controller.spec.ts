@@ -6,16 +6,16 @@ import 'reflect-metadata';
 import supertest from 'supertest';
 
 import { CustomRequest } from '#/backend/interfaces/CustomRequest';
+import { AuthController } from '#/backend/modules/users/auth.controller';
 import { CreateUserService } from '#/backend/modules/users/services/create-user.service';
 import { UserLoginService } from '#/backend/modules/users/services/user-login.service';
 import { UserLogoutService } from '#/backend/modules/users/services/user-logout.service';
-import { UsersController } from '#/backend/modules/users/users.controller';
 
 jest.mock('dotenv', () => ({
   config: jest.fn().mockReturnValue({ parsed: { JWT_EXPIRATION: 3600 } }),
 }));
 
-describe('users.controller.ts', () => {
+describe('auth.controller.ts', () => {
   let app: Application;
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('users.controller.ts', () => {
   });
 
   test('register', async () => {
-    const sut = new UsersController(
+    const sut = new AuthController(
       createMock<CreateUserService>({
         execute: jest.fn().mockResolvedValue({
           user: { id: 'userId', username: 'username' },
@@ -46,7 +46,7 @@ describe('users.controller.ts', () => {
   });
 
   test('login', async () => {
-    const sut = new UsersController(
+    const sut = new AuthController(
       createMock(),
       createMock<UserLoginService>({
         execute: jest.fn().mockResolvedValue({ accessToken: 'accessToken' }),
@@ -66,7 +66,7 @@ describe('users.controller.ts', () => {
   });
 
   test('logout', async () => {
-    const sut = new UsersController(
+    const sut = new AuthController(
       createMock(),
       createMock(),
       createMock<UserLogoutService>({ execute: jest.fn() }),
@@ -95,7 +95,7 @@ describe('users.controller.ts', () => {
       req.user = { id: 'userId', username: 'username' };
       next();
     };
-    const sut = new UsersController(createMock(), createMock(), createMock());
+    const sut = new AuthController(createMock(), createMock(), createMock());
     app.post('/', userMiddleware, sut.whoami);
 
     const response = await supertest(app).post('/').send();

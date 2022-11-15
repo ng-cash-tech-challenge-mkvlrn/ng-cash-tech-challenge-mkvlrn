@@ -10,7 +10,7 @@ import { UserLogoutService } from '#/backend/modules/users/services/user-logout.
 import { Envs } from '#/backend/server/Envs';
 
 @injectable()
-export class UsersController {
+export class AuthController {
   constructor(
     private createUserService: CreateUserService,
     private userLoginService: UserLoginService,

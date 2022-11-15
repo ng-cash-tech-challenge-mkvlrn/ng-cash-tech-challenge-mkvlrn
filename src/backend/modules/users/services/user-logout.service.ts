@@ -1,8 +1,10 @@
 import Redis from 'ioredis';
 import { decode } from 'jsonwebtoken';
+import { injectable } from 'tsyringe';
 
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
+@injectable()
 export class UserLogoutService {
   constructor(private redis: Redis) {}
 
