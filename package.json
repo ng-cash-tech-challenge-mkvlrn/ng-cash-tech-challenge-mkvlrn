@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "prepare": "npx husky install",
-    "test": "npx jest"
+    "test": "npx jest",
+    "dev:backend": "npx nodemon src/backend/index.ts",
+    "dev": "yarn dev:backend"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
