@@ -10,11 +10,18 @@ describe('cashout.service.ts', () => {
     const sut = new CashoutService(
       createMock<PrismaClient>({
         user: {
-          findUnique: jest.fn().mockResolvedValue({
-            accountId: 'accountId',
-            balance: 5,
-            account: {},
-          }),
+          findUnique: jest
+            .fn()
+            .mockResolvedValueOnce({
+              accountId: 'accountId',
+              balance: 5,
+              account: {},
+            })
+            .mockResolvedValueOnce({
+              accountId: 'accountId2',
+              balance: 5,
+              account: {},
+            }),
         },
         account: { update: jest.fn() },
         transaction: { create: jest.fn() },
@@ -147,6 +154,29 @@ describe('cashout.service.ts', () => {
       type: 'UNPROCESSABLE',
       message:
         'problem with destination account, contact the owner of that account',
+      details: null,
+    });
+  });
+
+  test('fail - cashout to own account', async () => {
+    const sut = new CashoutService(
+      createMock<PrismaClient>({
+        user: {
+          findUnique: jest
+            .fn()
+            .mockResolvedValueOnce({ id: 'userId', account: { balance: 4 } })
+            .mockResolvedValueOnce({ id: 'userId', account: { balance: 4 } }),
+        },
+      }),
+    );
+
+    const act = () => sut.execute('d', 'c', 1);
+
+    await expect(act).rejects.toMatchObject<AppError>({
+      name: 'AppError',
+      statusCode: 422,
+      type: 'UNPROCESSABLE',
+      message: 'cannot cashout to your own account',
       details: null,
     });
   });

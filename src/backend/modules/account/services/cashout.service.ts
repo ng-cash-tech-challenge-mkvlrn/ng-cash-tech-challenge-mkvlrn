@@ -42,6 +42,12 @@ export class CashoutService {
           'problem with destination account, contact the owner of that account',
         );
 
+      if (creditedUser.accountId === debitedUser.accountId)
+        throw new AppError(
+          AppErrorType.UNPROCESSABLE,
+          'cannot cashout to your own account',
+        );
+
       const [_debited, _credited, transaction] = await this.orm.$transaction([
         this.orm.account.update({
           where: { id: debitedUser.accountId },
