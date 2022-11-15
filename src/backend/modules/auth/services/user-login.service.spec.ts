@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createMock } from '@golevelup/ts-jest';
 import { PrismaClient } from '@prisma/client';
 import * as argon2 from 'argon2';

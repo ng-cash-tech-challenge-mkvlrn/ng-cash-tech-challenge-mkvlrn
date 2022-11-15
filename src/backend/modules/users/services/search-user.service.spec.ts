@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { createMock } from '@golevelup/ts-jest';
 import { PrismaClient } from '@prisma/client';
 

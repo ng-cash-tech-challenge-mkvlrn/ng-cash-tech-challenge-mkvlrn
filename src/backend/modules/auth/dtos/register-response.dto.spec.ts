@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { createMock } from '@golevelup/ts-jest';
 
 import { RegisterResponseDto } from '#/backend/modules/auth/dtos/register-response.dto';

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { createMock } from '@golevelup/ts-jest';
 import express, { Application } from 'express';
 import 'reflect-metadata';

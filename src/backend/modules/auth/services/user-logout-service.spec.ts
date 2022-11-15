@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createMock } from '@golevelup/ts-jest';
 import Redis from 'ioredis';
 import * as jsonwebtoken from 'jsonwebtoken';

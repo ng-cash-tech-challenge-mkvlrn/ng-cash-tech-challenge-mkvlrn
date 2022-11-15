@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { createMock } from '@golevelup/ts-jest';
 import { IsDefined, IsString, Length } from 'class-validator';
 import { Response } from 'express';
