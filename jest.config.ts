@@ -34,7 +34,7 @@ const config: Config = {
   rootDir: '.',
   projects: [backendConfig, frontendConfig],
   coverageDirectory: 'coverage',
-  collectCoverageFrom: ['./src/**/*.{ts,tsx}', '!**/index.{ts,tsx}'],
+  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/index.{ts,tsx}'],
 };
 
 export default config;
