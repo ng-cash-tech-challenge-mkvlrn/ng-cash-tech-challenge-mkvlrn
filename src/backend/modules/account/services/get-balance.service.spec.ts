@@ -1,7 +1,7 @@
 import { createMock } from '@golevelup/ts-jest';
 import { PrismaClient } from '@prisma/client';
 
-import { GetBalanceService } from '#/backend/modules/accounts/services/get-balance.service';
+import { GetBalanceService } from '#/backend/modules/account/services/get-balance.service';
 import { AppError } from '#/backend/server/AppError';
 
 describe('get-balance.service.ts', () => {
