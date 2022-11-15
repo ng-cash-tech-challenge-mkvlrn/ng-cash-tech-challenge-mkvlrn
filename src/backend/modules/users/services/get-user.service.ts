@@ -1,13 +1,16 @@
-import { PrismaClient, User } from '@prisma/client';
+import { Account, PrismaClient, User } from '@prisma/client';
 
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
 export class GetUserService {
   constructor(private orm: PrismaClient) {}
 
-  execute = async (username: string): Promise<User> => {
+  execute = async (username: string): Promise<User & { account: Account }> => {
     try {
-      const user = await this.orm.user.findUnique({ where: { username } });
+      const user = await this.orm.user.findUnique({
+        where: { username },
+        include: { account: true },
+      });
       if (!user) throw new AppError(AppErrorType.NOT_FOUND, 'user not found');
 
       return user;
