@@ -6,7 +6,7 @@ export class CreateUserDto {
   @IsDefined()
   username!: string;
 
-  @Matches(/^(?=.*\d)(?=.*[A-Z])(.{8,16})$/g, {
+  @Matches(/^(?=.*\d)(?=.*[A-Z])(.{8,16})$/, {
     message:
       'password must be between 8-16 characters, contain at least one number, at least one capitalized letter, and no special symbols',
   })
