@@ -15,5 +15,7 @@ export class AccountRouter {
     this.routes.use(this.auth.jwtStrategy);
 
     this.routes.get('/balance', this.controller.getBalance);
+
+    this.routes.post('/cashout', this.controller.cashOut);
   }
 }
