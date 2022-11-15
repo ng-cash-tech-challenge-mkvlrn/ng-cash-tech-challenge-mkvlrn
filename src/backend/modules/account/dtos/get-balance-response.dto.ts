@@ -11,6 +11,6 @@ export class GetBalanceResponseDto {
     this.balance = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    }).format(+account.balance.toFixed(2));
+    }).format(+account.balance);
   }
 }
