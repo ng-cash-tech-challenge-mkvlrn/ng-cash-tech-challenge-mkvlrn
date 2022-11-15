@@ -18,19 +18,23 @@ model User {
 }
 
 model Account {
-  id      String  @id @default(uuid())
+  id      String        @id @default(uuid())
   balance Decimal
   user    User?
+  txOut   Transaction[] @relation("txOut")
+  txIn    Transaction[] @relation("txIn")
 
   @@map("Accounts")
 }
 
 model Transaction {
-  id              String   @id @default(uuid())
-  creditedAccount String
-  debitedAccount  String
-  value           Decimal
-  createdAt       DateTime @default(now())
+  id                String   @id @default(uuid())
+  debitedAccountId  String
+  debitedAccount    Account  @relation("txOut", references: [id], fields: [debitedAccountId])
+  creditedAccountId String
+  creditedAccount   Account  @relation("txIn", references: [id], fields: [creditedAccountId])
+  value             Decimal
+  createdAt         DateTime @default(now())
 
   @@map("Transactions")
 }
