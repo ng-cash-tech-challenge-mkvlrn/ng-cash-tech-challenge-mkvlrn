@@ -28,7 +28,7 @@ describe('auth.controller.ts', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      id: 'accountId',
+      accountId: 'accountId',
       balance: '$100.00',
     });
   });
