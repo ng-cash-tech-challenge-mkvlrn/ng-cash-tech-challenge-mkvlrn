@@ -1,12 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "../../src/backend",
+    "rootDir": "../..",
     "outDir": "../../build",
     "noEmit": false
   },
   "include": [
-    "."
+    "./src/backend"
   ],
   "exclude": [
     "**/*.spec.ts"

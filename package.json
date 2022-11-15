@@ -11,6 +11,9 @@
   "scripts": {
     "prepare": "npx husky install",
     "test": "npx jest",
+    "prebuild": "rimraf build",
+    "build:backend": "npx tsc -p src/backend/tsconfig.build.json && npx tsc-alias -p src/backend/tsconfig.build.json",
+    "build": "yarn build:backend",
     "dev:backend": "npx nodemon src/backend/index.ts",
     "dev": "yarn dev:backend"
   },
