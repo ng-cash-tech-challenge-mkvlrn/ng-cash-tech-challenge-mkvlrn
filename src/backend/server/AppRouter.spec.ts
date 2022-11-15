@@ -5,7 +5,7 @@ import { AppRouter } from '#/backend/server/AppRouter';
 
 describe('AppRouter.ts', () => {
   test('works', () => {
-    const sut = new AppRouter(createMock(), createMock());
+    const sut = new AppRouter(createMock(), createMock(), createMock());
 
     expect(sut).toBeDefined();
   });

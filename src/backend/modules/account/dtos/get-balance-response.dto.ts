@@ -3,11 +3,14 @@ import { Account } from '@prisma/client';
 export class GetBalanceResponseDto {
   id!: string;
 
-  balance!: number;
+  balance!: string;
 
   constructor(account: Account) {
     this.id = account.id;
 
-    this.balance = +account.balance.toFixed(2);
+    this.balance = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(+account.balance.toFixed(2));
   }
 }

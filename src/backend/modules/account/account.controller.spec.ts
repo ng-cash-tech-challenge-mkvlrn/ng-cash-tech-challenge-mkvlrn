@@ -29,7 +29,7 @@ describe('auth.controller.ts', () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       id: 'accountId',
-      balance: 100.0,
+      balance: '$100.00',
     });
   });
 });

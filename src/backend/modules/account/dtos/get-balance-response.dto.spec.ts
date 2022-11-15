@@ -10,6 +10,6 @@ describe('get-balance-response.dto.ts', () => {
     );
 
     expect(sut).toBeDefined();
-    expect(sut).toEqual({ id: 'accountId', balance: 100.0 });
+    expect(sut).toEqual({ id: 'accountId', balance: '$100.00' });
   });
 });
