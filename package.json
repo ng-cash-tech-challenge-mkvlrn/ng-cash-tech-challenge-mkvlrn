@@ -13,8 +13,10 @@
     "test": "npx jest",
     "prebuild": "rimraf build",
     "build:backend": "npx tsc -p src/backend/tsconfig.build.json && npx tsc-alias -p src/backend/tsconfig.build.json",
-    "build": "yarn build:backend",
+    "build:frontend": "npx tsc -p src/frontend/tsconfig.build.json && vite build",
+    "build": "yarn build:backend && yarn build:frontend",
     "dev:backend": "npx nodemon src/backend/index.ts",
+    "dev:frontend": "npx vite",
     "dev": "yarn dev:backend"
   },
   "devDependencies": {
@@ -28,9 +30,12 @@
     "@types/jest": "^29.2.3",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -53,7 +58,8 @@
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.7.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "vite": "^3.2.4"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13"
