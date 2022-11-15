@@ -3,6 +3,7 @@ export enum AppErrorType {
   CONFLICT = 409,
   FORBIDDEN = 403,
   INTERNAL = 500,
+  UNPROCESSABLE = 422,
   NOT_FOUND = 404,
   UNAUTHORIZED = 401,
 }
