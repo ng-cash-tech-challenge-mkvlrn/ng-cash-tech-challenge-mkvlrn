@@ -30,15 +30,15 @@ describe('cashout.service.ts', () => {
           {},
           {
             id: 'transactionId',
-            debitedAccount: 'debitedAccountId',
-            creditedAccount: 'creditedAccountId',
+            debitedAccountId: 'debitedAccountId',
+            creditedAccountId: 'creditedAccountId',
             value: 4.2,
           },
         ]),
       }),
     );
 
-    const { transaction } = await sut.execute(
+    const transaction = await sut.execute(
       'debitedUsername',
       'creditedUsername',
       4.2,
@@ -46,8 +46,8 @@ describe('cashout.service.ts', () => {
 
     expect(transaction).toEqual({
       id: 'transactionId',
-      debitedAccount: 'debitedAccountId',
-      creditedAccount: 'creditedAccountId',
+      debitedAccountId: 'debitedAccountId',
+      creditedAccountId: 'creditedAccountId',
       value: 4.2,
     });
   });

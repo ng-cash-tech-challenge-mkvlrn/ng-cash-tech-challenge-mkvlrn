@@ -1,6 +1,6 @@
 import { createMock } from '@golevelup/ts-jest';
-import { Account, Transaction, User } from '@prisma/client';
 
+import { LoadedTransaction } from '#/backend/interfaces/LoadedTransaction';
 import { CashoutResponseDto } from '#/backend/modules/account/dtos/cashout-response.dto';
 
 describe('cashout-response.dto.ts', () => {
@@ -8,19 +8,12 @@ describe('cashout-response.dto.ts', () => {
     const mockDate = new Date();
     const sut = new CashoutResponseDto(
       'userId',
-      createMock<User & { account: Account }>({
-        id: 'userId',
-        accountId: 'accountId',
-      }),
-      createMock<User & { account: Account }>({
-        id: 'userId2',
-        username: 'username2',
-        accountId: 'accountId2',
-      }),
-      createMock<Transaction>({
+      createMock<LoadedTransaction>({
         id: 'transactionId',
         value: 5,
         createdAt: mockDate,
+        debitedAccount: { user: { id: 'userId' } },
+        creditedAccount: { user: { username: 'username2' } },
       }),
     );
 
@@ -37,19 +30,12 @@ describe('cashout-response.dto.ts', () => {
     const mockDate = new Date();
     const sut = new CashoutResponseDto(
       'userId',
-      createMock<User & { account: Account }>({
-        id: 'userId2',
-        username: 'username2',
-        accountId: 'accountId2',
-      }),
-      createMock<User & { account: Account }>({
-        id: 'userId',
-        accountId: 'accountId',
-      }),
-      createMock<Transaction>({
+      createMock<LoadedTransaction>({
         id: 'transactionId',
         value: 5,
         createdAt: mockDate,
+        debitedAccount: { user: { id: 'userId2', username: 'username2' } },
+        creditedAccount: { user: { username: 'username' } },
       }),
     );
 

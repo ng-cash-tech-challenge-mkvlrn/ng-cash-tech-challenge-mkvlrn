@@ -1,4 +1,4 @@
-import { Account, User } from '@prisma/client';
+import { LoadedUser } from '#/backend/interfaces/LoadedUser';
 
 export class GetUserResponseDto {
   id!: string;
@@ -7,7 +7,7 @@ export class GetUserResponseDto {
 
   accountId!: string;
 
-  constructor(user: User & { account: Account }) {
+  constructor(user: LoadedUser) {
     this.id = user.id;
     this.username = user.username;
     this.accountId = user.accountId;

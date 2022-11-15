@@ -1,6 +1,7 @@
-import { Account, PrismaClient, Transaction, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { injectable } from 'tsyringe';
 
+import { LoadedTransaction } from '#/backend/interfaces/LoadedTransaction';
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
 @injectable()
@@ -11,11 +12,7 @@ export class CashoutService {
     debitedUsername: string,
     creditedUsername: string,
     value: number,
-  ): Promise<{
-    debitedUser: User & { account: Account };
-    creditedUser: User & { account: Account };
-    transaction: Transaction;
-  }> => {
+  ): Promise<LoadedTransaction> => {
     try {
       const debitedUser = await this.orm.user.findUnique({
         where: { username: debitedUsername },
@@ -59,14 +56,18 @@ export class CashoutService {
         }),
         this.orm.transaction.create({
           data: {
-            debitedAccount: debitedUser.accountId,
-            creditedAccount: creditedUser.accountId,
+            debitedAccountId: debitedUser.accountId,
+            creditedAccountId: creditedUser.accountId,
             value,
+          },
+          include: {
+            debitedAccount: { include: { user: true } },
+            creditedAccount: { include: { user: true } },
           },
         }),
       ]);
 
-      return { debitedUser, creditedUser, transaction };
+      return transaction;
     } catch (err) {
       if (err instanceof AppError) throw err;
       throw new AppError(AppErrorType.INTERNAL, (err as Error).message);

@@ -1,4 +1,4 @@
-import { Account, Transaction, User } from '@prisma/client';
+import { LoadedTransaction } from '#/backend/interfaces/LoadedTransaction';
 
 export class CashoutResponseDto {
   id: string;
@@ -13,22 +13,17 @@ export class CashoutResponseDto {
 
   date: Date;
 
-  constructor(
-    currentUser: string,
-    debited: User & { account: Account },
-    credited: User & { account: Account },
-    transaction: Transaction,
-  ) {
+  constructor(currentUserId: string, transaction: LoadedTransaction) {
     this.id = transaction.id;
     this.value = +transaction.value;
     this.date = transaction.createdAt;
 
-    if (currentUser === debited.id) {
+    if (currentUserId === transaction.debitedAccount.user?.id) {
       this.cashFlow = 'OUT';
-      this.to = credited.username;
+      this.to = transaction.creditedAccount.user?.username;
     } else {
       this.cashFlow = 'IN';
-      this.from = debited.username;
+      this.from = transaction.debitedAccount.user?.username;
     }
   }
 }

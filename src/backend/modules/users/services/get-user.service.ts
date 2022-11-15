@@ -1,13 +1,14 @@
-import { Account, PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { injectable } from 'tsyringe';
 
+import { LoadedUser } from '#/backend/interfaces/LoadedUser';
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
 @injectable()
 export class GetUserService {
   constructor(private orm: PrismaClient) {}
 
-  execute = async (username: string): Promise<User & { account: Account }> => {
+  execute = async (username: string): Promise<LoadedUser> => {
     try {
       const user = await this.orm.user.findUnique({
         where: { username },

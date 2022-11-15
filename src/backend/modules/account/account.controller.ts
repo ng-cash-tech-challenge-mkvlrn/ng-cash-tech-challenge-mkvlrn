@@ -24,18 +24,12 @@ export class AccountController {
 
   cashOut = async (req: CustomRequest<CashoutInputDto>, res: Response) => {
     const { user, body } = req;
-    const { debitedUser, creditedUser, transaction } =
-      await this.cashoutService.execute(user?.username!, body.to, body.value);
+    const transaction = await this.cashoutService.execute(
+      user?.username!,
+      body.to,
+      body.value,
+    );
 
-    return res
-      .status(201)
-      .json(
-        new CashoutResponseDto(
-          user?.id!,
-          debitedUser,
-          creditedUser,
-          transaction,
-        ),
-      );
+    return res.status(201).json(new CashoutResponseDto(user?.id!, transaction));
   };
 }

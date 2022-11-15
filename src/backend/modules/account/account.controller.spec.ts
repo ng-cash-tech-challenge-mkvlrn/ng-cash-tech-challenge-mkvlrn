@@ -50,14 +50,10 @@ describe('auth.controller.ts', () => {
       createMock(),
       createMock<CashoutService>({
         execute: jest.fn().mockResolvedValue({
-          debitedUser: { id: 'userId' },
-          creditedUser: { username: 'creditedUsername' },
-          transaction: {
-            id: 'transactionId',
-            debitedAccountId: 'debitedAccountId',
-            creditedAccountId: 'creditedAccountId',
-            value: 5,
-          },
+          id: 'transactionId',
+          debitedAccount: { user: { id: 'userId' } },
+          creditedAccount: { user: { username: 'creditedUsername' } },
+          value: 5,
         }),
       }),
     );
