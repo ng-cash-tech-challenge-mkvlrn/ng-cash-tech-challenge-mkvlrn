@@ -21,18 +21,22 @@ describe('CreateUserService.ts', () => {
             username: 'username',
           }),
         },
+        account: {
+          create: jest.fn().mockResolvedValue({ userId: 'userId' }),
+        },
       }),
     );
 
-    const result = await sut.execute({
+    const { user, account } = await sut.execute({
       username: 'username',
       password: '12345678',
     });
 
     expect(hashSpy).toHaveBeenCalledWith('12345678');
-    expect(result).toEqual({
+    expect(user).toEqual({
       username: 'username',
     });
+    expect(account).toEqual({ userId: 'userId' });
   });
 
   test('fail - username in use', async () => {

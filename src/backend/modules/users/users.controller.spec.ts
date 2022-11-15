@@ -25,9 +25,10 @@ describe('users.controller.ts', () => {
   test('register', async () => {
     const sut = new UsersController(
       createMock<CreateUserService>({
-        execute: jest
-          .fn()
-          .mockResolvedValue({ id: 'userId', username: 'username' }),
+        execute: jest.fn().mockResolvedValue({
+          user: { id: 'userId', username: 'username' },
+          account: { id: 'accountId', userId: 'userId', balance: 100.0 },
+        }),
       }),
       createMock(),
       createMock(),
@@ -37,7 +38,11 @@ describe('users.controller.ts', () => {
     const response = await supertest(app).post('/').send();
 
     expect(response.status).toBe(201);
-    expect(response.body).toEqual({ id: 'userId', username: 'username' });
+    expect(response.body).toEqual({
+      id: 'userId',
+      username: 'username',
+      accountId: 'accountId',
+    });
   });
 
   test('login', async () => {

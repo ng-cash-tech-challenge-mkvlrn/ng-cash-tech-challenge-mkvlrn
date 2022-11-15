@@ -18,9 +18,9 @@ export class UsersController {
   ) {}
 
   register = async (req: CustomRequest<CreateUserDto>, res: Response) => {
-    const result = await this.createUserService.execute(req.body);
+    const { user, account } = await this.createUserService.execute(req.body);
 
-    return res.status(201).json(new RegisterResponseDto(result));
+    return res.status(201).json(new RegisterResponseDto(user, account));
   };
 
   login = async (req: CustomRequest<CreateUserDto>, res: Response) => {

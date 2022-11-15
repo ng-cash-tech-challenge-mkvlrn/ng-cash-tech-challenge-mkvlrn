@@ -1,12 +1,15 @@
-import { User } from '@prisma/client';
+import { Account, User } from '@prisma/client';
 
 export class RegisterResponseDto {
   id!: string;
 
   username!: string;
 
-  constructor(user: User) {
+  accountId!: string;
+
+  constructor(user: User, account: Account) {
     this.id = user.id;
     this.username = user.username;
+    this.accountId = account.id;
   }
 }
