@@ -23,7 +23,7 @@ export class CreateUserService {
       const accountId = randomUUID();
       const [account, user] = await this.orm.$transaction([
         this.orm.account.create({
-          data: { balance: 100 },
+          data: { balance: 100, id: accountId },
         }),
         this.orm.user.create({
           data: { username, password: passwordHash, accountId },
