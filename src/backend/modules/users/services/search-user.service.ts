@@ -1,7 +1,9 @@
 import { Account, PrismaClient, User } from '@prisma/client';
+import { injectable } from 'tsyringe';
 
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 
+@injectable()
 export class SearchUserService {
   constructor(private orm: PrismaClient) {}
 

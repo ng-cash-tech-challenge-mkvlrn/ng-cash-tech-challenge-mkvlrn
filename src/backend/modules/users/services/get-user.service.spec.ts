@@ -1,5 +1,6 @@
 import { createMock } from '@golevelup/ts-jest';
 import { PrismaClient } from '@prisma/client';
+import 'reflect-metadata';
 
 import { GetUserService } from '#/backend/modules/users/services/get-user.service';
 import { AppError } from '#/backend/server/AppError';
