@@ -33,6 +33,9 @@ export class AuthController {
     return res.json({ success: true });
   };
 
+  whoami = async (req: CustomRequest<CreateUserDto>, res: Response) =>
+    res.json(req.user);
+
   logout = async (req: CustomRequest<CreateUserDto>, res: Response) => {
     const token = req.cookies.accessToken;
     res.clearCookie('accessToken');
@@ -40,7 +43,4 @@ export class AuthController {
 
     return res.json({ success: true });
   };
-
-  whoami = async (req: CustomRequest<CreateUserDto>, res: Response) =>
-    res.json(req.user);
 }

@@ -9,6 +9,7 @@ describe('auth.router.ts', () => {
     const sut = new AuthRouter(
       createMock(),
       createMock<Validation>({ validate: jest.fn(() => jest.fn()) }),
+      createMock(),
     );
 
     expect(sut).toBeDefined();
