@@ -17,17 +17,16 @@ describe('CreateUserService.ts', () => {
       createMock<PrismaClient>({
         user: {
           findUnique: jest.fn().mockResolvedValue(null),
-          create: jest.fn().mockResolvedValue({
-            username: 'username',
-          }),
+          create: jest.fn(),
         },
-        account: {
-          create: jest.fn().mockResolvedValue({ userId: 'userId' }),
-        },
+        account: { create: jest.fn() },
+        $transaction: jest
+          .fn()
+          .mockResolvedValue([{ userId: 'userId' }, { username: 'username' }]),
       }),
     );
 
-    const { user, account } = await sut.execute({
+    const { account, user } = await sut.execute({
       username: 'username',
       password: '12345678',
     });
