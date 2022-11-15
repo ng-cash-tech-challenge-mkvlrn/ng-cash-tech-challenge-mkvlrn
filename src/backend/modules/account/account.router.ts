@@ -24,5 +24,7 @@ export class AccountRouter {
       this.validator.validate(CashoutInputDto),
       this.controller.cashOut,
     );
+
+    this.routes.get('/transactions', this.controller.getTransactions);
   }
 }

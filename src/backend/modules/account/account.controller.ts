@@ -7,12 +7,14 @@ import { CashoutResponseDto } from '#/backend/modules/account/dtos/cashout-respo
 import { GetBalanceResponseDto } from '#/backend/modules/account/dtos/get-balance-response.dto';
 import { CashoutService } from '#/backend/modules/account/services/cashout.service';
 import { GetBalanceService } from '#/backend/modules/account/services/get-balance.service';
+import { GetTransactionsService } from '#/backend/modules/account/services/get-transactions.service';
 
 @injectable()
 export class AccountController {
   constructor(
     private getBalanceService: GetBalanceService,
     private cashoutService: CashoutService,
+    private getTransactionsService: GetTransactionsService,
   ) {}
 
   getBalance = async (req: CustomRequest, res: Response) => {
@@ -31,5 +33,12 @@ export class AccountController {
     );
 
     return res.status(201).json(new CashoutResponseDto(user?.id!, transaction));
+  };
+
+  getTransactions = async (req: CustomRequest, res: Response) => {
+    const { user } = req;
+    const result = await this.getTransactionsService.execute(user?.accountId!);
+
+    return res.json(result.map((tx) => new CashoutResponseDto(user?.id!, tx)));
   };
 }
