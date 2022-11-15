@@ -58,7 +58,7 @@ describe('create-user.service.ts', () => {
       name: 'AppError',
       statusCode: 409,
       type: 'CONFLICT',
-      message: 'username already in use',
+      message: 'username is taken',
       details: null,
     });
   });

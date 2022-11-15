@@ -17,7 +17,7 @@ export class CreateUserService {
       const { username, password } = input;
       const checkUser = await this.orm.user.findUnique({ where: { username } });
       if (checkUser)
-        throw new AppError(AppErrorType.CONFLICT, 'username already in use');
+        throw new AppError(AppErrorType.CONFLICT, 'username is taken');
 
       const passwordHash = await hash(password);
       const accountId = randomUUID();
