@@ -11,7 +11,6 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useToggle } from '@mantine/hooks';
-import { showNotification } from '@mantine/notifications';
 import { AxiosError } from 'axios';
 
 import { AppError } from '#/frontend/interfaces/AppError';
@@ -53,11 +52,6 @@ export function AuthPageForm(props: PaperProps) {
                 if (m.includes('password')) form.setFieldError('password', m);
               });
             }
-            showNotification({
-              title: error.response?.data.statusCode,
-              message: error.response?.data.message,
-              color: 'red',
-            });
           } finally {
             setCheckingAuth(false);
           }
