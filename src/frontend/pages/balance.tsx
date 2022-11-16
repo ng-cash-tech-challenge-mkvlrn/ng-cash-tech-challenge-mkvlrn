@@ -30,7 +30,7 @@ export function BalancePage() {
       {loading && <Loader size='xl' />}
       {!loading && (
         <>
-          <Title order={3}>your currente balance:</Title>
+          <Title order={3}>your current balance:</Title>
           <Text style={{ fontSize: '18rem' }}>
             {new Intl.NumberFormat('en-US', {
               style: 'currency',
