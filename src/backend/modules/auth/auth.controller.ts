@@ -20,6 +20,11 @@ export class AuthController {
 
   register = async (req: CustomRequest<CreateUserDto>, res: Response) => {
     const { user, account } = await this.createUserService.execute(req.body);
+    const { ngCashAccessToken } = await this.userLoginService.execute(req.body);
+    res.cookie('ngCashAccessToken', ngCashAccessToken, {
+      httpOnly: true,
+      maxAge: +Envs.JWT_EXPIRATION * 1000,
+    });
 
     return res.status(201).json(new RegisterResponseDto(user, account));
   };
