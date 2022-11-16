@@ -1,4 +1,5 @@
 import { ActionIcon, Divider, Group, Text } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { IconLogout } from '@tabler/icons';
 
 import { useAuth } from '#/frontend/state/user.state';
@@ -27,6 +28,11 @@ export function UserFooter() {
               await axios.get('/auth/logout');
               setUser(null);
               setCheckingAuth(false);
+              showNotification({
+                title: 'logout',
+                message: 'you have been logged out',
+                color: 'blue',
+              });
             }}
           >
             <IconLogout size={24} />

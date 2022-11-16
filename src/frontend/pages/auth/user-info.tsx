@@ -1,4 +1,5 @@
 import { Button, Divider, Text, Title } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 
 import { useAuth } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
@@ -25,6 +26,11 @@ export function AuthPageInfo() {
           await axios.get('/auth/logout');
           setUser(null);
           setCheckingAuth(false);
+          showNotification({
+            title: 'logout',
+            message: 'you have been logged out',
+            color: 'blue',
+          });
         }}
       >
         logout

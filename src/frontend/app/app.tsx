@@ -39,12 +39,6 @@ export function App() {
         message: 'login successful',
         color: 'blue',
       });
-    else
-      showNotification({
-        title: 'logout',
-        message: 'you have been logged out',
-        color: 'blue',
-      });
   }, [user]);
 
   return (
