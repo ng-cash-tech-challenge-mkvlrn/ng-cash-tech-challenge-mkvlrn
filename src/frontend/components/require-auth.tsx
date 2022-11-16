@@ -8,9 +8,7 @@ interface RequireAuthProps {
 export function RequireAuth({ children }: RequireAuthProps) {
   const { user } = useAuth();
 
-  if (!user) {
-    return <AppError code={401} />;
-  }
+  if (!user) return <AppError code={401} />;
 
   return children;
 }

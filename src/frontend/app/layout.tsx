@@ -7,11 +7,14 @@ import {
   MediaQuery,
   Navbar,
   Text,
+  Title,
   useMantineTheme,
 } from '@mantine/core';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import logo from '#/frontend/assets/logo.png';
+import { NavButtons } from '#/frontend/components/navbuttons';
 
 interface LayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -20,6 +23,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const location = useLocation();
 
   return (
     <AppShell
@@ -40,7 +44,7 @@ export function Layout({ children }: LayoutProps) {
           hidden={!opened}
           width={{ sm: 200, lg: 300 }}
         >
-          <Text>navbar</Text>
+          <NavButtons />
         </Navbar>
       }
       footer={
@@ -71,6 +75,7 @@ export function Layout({ children }: LayoutProps) {
         </Header>
       }
     >
+      <Title>{location.pathname}</Title>
       {children}
     </AppShell>
   );

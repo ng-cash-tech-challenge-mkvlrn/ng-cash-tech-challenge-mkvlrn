@@ -26,20 +26,38 @@ export function App() {
   }, [axios, setUser]);
 
   return (
-    <Layout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
+          <Route path='/' element={<div>home</div>} />
           <Route
-            path='/'
+            path='/balance'
             element={
               <RequireAuth>
                 <div>balance</div>
               </RequireAuth>
             }
           />
+          <Route
+            path='/transfer'
+            element={
+              <RequireAuth>
+                <div>transfer</div>
+              </RequireAuth>
+            }
+          />
+          <Route
+            path='/transactions'
+            element={
+              <RequireAuth>
+                <div>transactions</div>
+              </RequireAuth>
+            }
+          />
+          <Route path='/auth' element={<div>auth</div>} />
           <Route path='*' element={<AppError code={404} />} />
         </Routes>
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   );
 }
