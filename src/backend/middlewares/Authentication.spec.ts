@@ -24,7 +24,7 @@ describe('jwtStrategy', () => {
     const nextSpy = jest.fn();
 
     await sut.jwtStrategy(
-      createMock<CustomRequest>({ cookies: { accessToken: true } }),
+      createMock<CustomRequest>({ cookies: { ngCashAccessToken: true } }),
       createMock<Response>(),
       nextSpy,
     );
@@ -65,7 +65,7 @@ describe('jwtStrategy', () => {
     const nextSpy = jest.fn();
 
     await sut.jwtStrategy(
-      createMock<CustomRequest>({ cookies: { accessToken: true } }),
+      createMock<CustomRequest>({ cookies: { ngCashAccessToken: true } }),
       createMock<Response>(),
       nextSpy,
     );
@@ -93,7 +93,7 @@ describe('jwtStrategy', () => {
     const nextSpy = jest.fn();
 
     await sut.jwtStrategy(
-      createMock<CustomRequest>({ cookies: { accessToken: true } }),
+      createMock<CustomRequest>({ cookies: { ngCashAccessToken: true } }),
       createMock<Response>(),
       nextSpy,
     );
@@ -121,7 +121,7 @@ describe('jwtStrategy', () => {
     const nextSpy = jest.fn();
 
     await sut.jwtStrategy(
-      createMock<CustomRequest>({ cookies: { accessToken: true } }),
+      createMock<CustomRequest>({ cookies: { ngCashAccessToken: true } }),
       createMock<Response>(),
       nextSpy,
     );
@@ -147,7 +147,7 @@ describe('jwtStrategy', () => {
     );
     const nextSpy = jest.fn();
     await sut.jwtStrategy(
-      createMock<CustomRequest>({ cookies: { accessToken: true } }),
+      createMock<CustomRequest>({ cookies: { ngCashAccessToken: true } }),
       createMock<Response>(),
       nextSpy,
     );

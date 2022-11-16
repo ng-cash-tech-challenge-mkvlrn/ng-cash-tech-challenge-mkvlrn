@@ -24,8 +24,8 @@ export class AuthController {
   };
 
   login = async (req: CustomRequest<CreateUserDto>, res: Response) => {
-    const { accessToken } = await this.userLoginService.execute(req.body);
-    res.cookie('accessToken', accessToken, {
+    const { ngCashAccessToken } = await this.userLoginService.execute(req.body);
+    res.cookie('ngCashAccessToken', ngCashAccessToken, {
       httpOnly: true,
       maxAge: +Envs.JWT_EXPIRATION * 1000,
     });
@@ -37,8 +37,8 @@ export class AuthController {
     res.json(req.user);
 
   logout = async (req: CustomRequest<CreateUserDto>, res: Response) => {
-    const token = req.cookies.accessToken;
-    res.clearCookie('accessToken');
+    const token = req.cookies.ngCashAccessToken;
+    res.clearCookie('ngCashAccessToken');
     await this.userLogoutService.execute(token);
 
     return res.json({ success: true });

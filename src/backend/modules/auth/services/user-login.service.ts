@@ -8,7 +8,7 @@ import { AppError, AppErrorType } from '#/backend/server/AppError';
 import { Envs } from '#/backend/server/Envs';
 
 interface AccessToken {
-  accessToken: string;
+  ngCashAccessToken: string;
 }
 
 @injectable()
@@ -26,11 +26,11 @@ export class UserLoginService {
       if (!passwordMatches)
         throw new AppError(AppErrorType.UNAUTHORIZED, 'invalid credentials');
 
-      const accessToken = sign({ sub: user.id }, Envs.JWT_SECRET, {
+      const ngCashAccessToken = sign({ sub: user.id }, Envs.JWT_SECRET, {
         expiresIn: +Envs.JWT_EXPIRATION,
       });
 
-      return { accessToken };
+      return { ngCashAccessToken };
     } catch (err) {
       if (err instanceof AppError) throw err;
       throw new AppError(AppErrorType.INTERNAL, (err as Error).message);

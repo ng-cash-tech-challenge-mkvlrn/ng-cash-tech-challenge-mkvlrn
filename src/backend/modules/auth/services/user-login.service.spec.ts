@@ -15,7 +15,7 @@ describe('user-login.service.ts', () => {
     const verifySpy = jest.spyOn(argon2, 'verify').mockResolvedValue(true);
     const signSpy = jest
       .spyOn(jsonwebtoken, 'sign')
-      .mockImplementation(() => 'accessToken');
+      .mockImplementation(() => 'ngCashAccessToken');
     const sut = new UserLoginService(
       createMock<PrismaClient>({
         user: {
@@ -34,7 +34,7 @@ describe('user-login.service.ts', () => {
     expect(verifySpy).toHaveBeenCalledWith('hashedPassword', '12345678');
     expect(signSpy).toHaveBeenCalled();
     expect(result).toEqual({
-      accessToken: 'accessToken',
+      ngCashAccessToken: 'ngCashAccessToken',
     });
   });
 

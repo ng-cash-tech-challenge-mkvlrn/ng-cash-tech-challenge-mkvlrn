@@ -48,7 +48,9 @@ describe('auth.controller.ts', () => {
     const sut = new AuthController(
       createMock(),
       createMock<UserLoginService>({
-        execute: jest.fn().mockResolvedValue({ accessToken: 'accessToken' }),
+        execute: jest
+          .fn()
+          .mockResolvedValue({ ngCashAccessToken: 'ngCashAccessToken' }),
       }),
       createMock(),
     );
@@ -60,7 +62,7 @@ describe('auth.controller.ts', () => {
     expect(response.body).toEqual({ success: true });
     expect(response.headers['set-cookie']).toHaveLength(1);
     expect(response.headers['set-cookie'][0]).toMatch(
-      /^accessToken=accessToken; Max-Age=3600; Path=\//,
+      /^ngCashAccessToken=ngCashAccessToken; Max-Age=3600; Path=\//,
     );
   });
 
@@ -75,13 +77,15 @@ describe('auth.controller.ts', () => {
 
     const response = await supertest(app)
       .post('/')
-      .set('Cookie', ['accessToken=accessToken; Max-Age=3600; Path=/'])
+      .set('Cookie', [
+        'ngCashAccessToken=ngCashAccessToken; Max-Age=3600; Path=/',
+      ])
       .send();
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ success: true });
     expect(response.headers['set-cookie']).toEqual([
-      'accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT',
+      'ngCashAccessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT',
     ]);
   });
 

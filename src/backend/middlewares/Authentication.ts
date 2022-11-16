@@ -17,16 +17,16 @@ export class Authentication {
     _res: Response,
     next: NextFunction,
   ) => {
-    const { accessToken } = req.cookies;
+    const { ngCashAccessToken } = req.cookies;
     try {
-      if (!accessToken)
+      if (!ngCashAccessToken)
         throw new AppError(AppErrorType.UNAUTHORIZED, 'missing jwt token');
 
-      const loggedout = await this.checkBlacklist(accessToken);
+      const loggedout = await this.checkBlacklist(ngCashAccessToken);
       if (loggedout)
         throw new AppError(AppErrorType.UNAUTHORIZED, 'token was invalidated');
 
-      const payload = verify(accessToken, Envs.JWT_SECRET) as {
+      const payload = verify(ngCashAccessToken, Envs.JWT_SECRET) as {
         sub: string;
       };
 
