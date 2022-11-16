@@ -13,6 +13,9 @@ export default defineConfig({
       '#': resolve(__dirname, './src'),
     },
   },
+  define: {
+    'process.env': process.env,
+  },
   base: '',
   build: {
     outDir: '../../build/client',
