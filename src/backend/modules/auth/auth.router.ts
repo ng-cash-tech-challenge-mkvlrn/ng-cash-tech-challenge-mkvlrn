@@ -5,6 +5,7 @@ import { Authentication } from '#/backend/middlewares/Authentication';
 import { Validation } from '#/backend/middlewares/Validation';
 import { AuthController } from '#/backend/modules/auth/auth.controller';
 import { CreateUserDto } from '#/backend/modules/auth/dtos/create-user.dto';
+import { UserLoginDto } from '#/backend/modules/auth/dtos/user-login.dto';
 
 @injectable()
 export class AuthRouter {
@@ -23,7 +24,7 @@ export class AuthRouter {
 
     this.routes.post(
       '/login',
-      this.validator.validate(CreateUserDto),
+      this.validator.validate(UserLoginDto),
       this.controller.login,
     );
 

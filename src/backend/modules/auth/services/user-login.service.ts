@@ -3,7 +3,7 @@ import { verify } from 'argon2';
 import { sign } from 'jsonwebtoken';
 import { injectable } from 'tsyringe';
 
-import { CreateUserDto } from '#/backend/modules/auth/dtos/create-user.dto';
+import { UserLoginDto } from '#/backend/modules/auth/dtos/user-login.dto';
 import { AppError, AppErrorType } from '#/backend/server/AppError';
 import { Envs } from '#/backend/server/Envs';
 
@@ -15,7 +15,7 @@ interface AccessToken {
 export class UserLoginService {
   constructor(private orm: PrismaClient) {}
 
-  execute = async (input: CreateUserDto): Promise<AccessToken> => {
+  execute = async (input: UserLoginDto): Promise<AccessToken> => {
     try {
       const { username, password } = input;
       const user = await this.orm.user.findUnique({ where: { username } });
