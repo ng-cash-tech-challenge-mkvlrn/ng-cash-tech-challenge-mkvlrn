@@ -30,7 +30,7 @@ const errorMessages = {
 export function AppError({ code }: AppErrorProps) {
   const error = errorMessages[code];
   return (
-    <Paper shadow='xs' p='md'>
+    <Paper shadow='xs' radius='md' p='xl' withBorder>
       <Group align='flex-end' spacing='sm'>
         {error.icon}
         <Title>{error.heading}</Title>
