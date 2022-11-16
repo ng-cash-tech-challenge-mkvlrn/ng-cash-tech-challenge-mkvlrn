@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.7.2",
+    "@mantine/hooks": "^5.7.2",
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
