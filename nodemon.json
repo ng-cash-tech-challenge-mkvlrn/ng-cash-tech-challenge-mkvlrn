@@ -4,6 +4,7 @@
   },
   "ext": "ts,json",
   "ignore": [
-    "*.spec.ts"
+    "*.spec.ts",
+    "./src/frontend/**/*"
   ]
 }
