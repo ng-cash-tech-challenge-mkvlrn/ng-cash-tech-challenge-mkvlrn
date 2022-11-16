@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from '#/frontend/app/layout';
 import { RequireAuth } from '#/frontend/components/require-auth';
 import { AuthPage } from '#/frontend/pages/auth/auth';
+import { BalancePage } from '#/frontend/pages/balance';
 import { AppError } from '#/frontend/pages/error';
 import { useAuth, UserState } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
@@ -52,7 +53,7 @@ export function App() {
               path='/balance'
               element={
                 <RequireAuth>
-                  <div>balance</div>
+                  <BalancePage />
                 </RequireAuth>
               }
             />
