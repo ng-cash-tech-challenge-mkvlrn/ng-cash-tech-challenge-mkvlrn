@@ -8,6 +8,7 @@ import { RequireAuth } from '#/frontend/components/require-auth';
 import { AuthPage } from '#/frontend/pages/auth/auth';
 import { BalancePage } from '#/frontend/pages/balance';
 import { AppError } from '#/frontend/pages/error';
+import { HomePage } from '#/frontend/pages/home';
 import { useAuth, UserState } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
 
@@ -48,7 +49,7 @@ export function App() {
         <LoadingOverlay visible={checkingAuth} overlayBlur={2} />
         <Layout>
           <Routes>
-            <Route path='/' element={<div>home</div>} />
+            <Route path='/' element={<HomePage />} />
             <Route
               path='/balance'
               element={
