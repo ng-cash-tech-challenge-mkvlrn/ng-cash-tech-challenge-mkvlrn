@@ -1,6 +1,6 @@
 {
   "*.(ts|tsx)": [
-    "npx tsc-files",
+    "npx tsc-files src/frontend/assets/assets.d.ts",
     "npx eslint --fix",
     "npx prettier --write",
     "npx jest --bail --findRelatedTests"
