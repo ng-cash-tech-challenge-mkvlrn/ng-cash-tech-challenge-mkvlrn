@@ -35,6 +35,7 @@ export class GetTransactionsService {
           debitedAccount: { include: { user: true } },
           creditedAccount: { include: { user: true } },
         },
+        orderBy: { createdAt: 'desc' },
       });
 
       return result;
