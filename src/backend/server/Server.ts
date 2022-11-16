@@ -16,7 +16,12 @@ export class Server {
   private httpServer: HttpServer;
 
   constructor(private errorHandler: ErrorHandling, private router: AppRouter) {
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        credentials: true,
+        origin: ['http://localhost:3001', 'http://localhost:4001'],
+      }),
+    );
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
