@@ -1,63 +1,88 @@
+import { LoadingOverlay } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Layout } from '#/frontend/app/layout';
 import { RequireAuth } from '#/frontend/components/require-auth';
+import { AuthPage } from '#/frontend/pages/auth/auth';
 import { AppError } from '#/frontend/pages/error';
 import { useAuth, UserState } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
 
 export function App() {
-  const { setUser } = useAuth();
+  const { user, setUser, checkingAuth, setCheckingAuth } = useAuth();
   const { axios } = useAxios();
 
   useEffect(() => {
     const auth = async () => {
       try {
+        setCheckingAuth(true);
         const response = await axios.get<UserState>('/auth/whoami');
 
         if (response.data) setUser(response.data);
       } catch (err) {
         //
+      } finally {
+        setCheckingAuth(false);
       }
     };
 
     auth();
-  }, [axios, setUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (user)
+      showNotification({
+        title: 'login',
+        message: 'login successful',
+        color: 'blue',
+      });
+    else
+      showNotification({
+        title: 'logout',
+        message: 'you have been logged out',
+        color: 'blue',
+      });
+  }, [user]);
 
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<div>home</div>} />
-          <Route
-            path='/balance'
-            element={
-              <RequireAuth>
-                <div>balance</div>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/transfer'
-            element={
-              <RequireAuth>
-                <div>transfer</div>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/transactions'
-            element={
-              <RequireAuth>
-                <div>transactions</div>
-              </RequireAuth>
-            }
-          />
-          <Route path='/auth' element={<div>auth</div>} />
-          <Route path='*' element={<AppError code={404} />} />
-        </Routes>
-      </Layout>
+      <div style={{ width: '100%', position: 'relative' }}>
+        <LoadingOverlay visible={checkingAuth} overlayBlur={2} />
+        <Layout>
+          <Routes>
+            <Route path='/' element={<div>home</div>} />
+            <Route
+              path='/balance'
+              element={
+                <RequireAuth>
+                  <div>balance</div>
+                </RequireAuth>
+              }
+            />
+            <Route
+              path='/transfer'
+              element={
+                <RequireAuth>
+                  <div>transfer</div>
+                </RequireAuth>
+              }
+            />
+            <Route
+              path='/transactions'
+              element={
+                <RequireAuth>
+                  <div>transactions</div>
+                </RequireAuth>
+              }
+            />
+            <Route path='/auth' element={<AuthPage />} />
+            <Route path='*' element={<AppError code={404} />} />
+          </Routes>
+        </Layout>
+      </div>
     </BrowserRouter>
   );
 }

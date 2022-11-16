@@ -1,6 +1,7 @@
 import {
   AppShell,
   Burger,
+  Container,
   Footer,
   Header,
   Image,
@@ -15,6 +16,7 @@ import { useLocation } from 'react-router-dom';
 
 import logo from '#/frontend/assets/logo.png';
 import { NavButtons } from '#/frontend/components/navbuttons';
+import { UserFooter } from '#/frontend/components/user-footer';
 
 interface LayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -49,7 +51,7 @@ export function Layout({ children }: LayoutProps) {
       }
       footer={
         <Footer height={60} p='md'>
-          footer
+          <UserFooter />
         </Footer>
       }
       header={
@@ -75,8 +77,8 @@ export function Layout({ children }: LayoutProps) {
         </Header>
       }
     >
-      <Title>{location.pathname}</Title>
-      {children}
+      <Title mb='md'>{location.pathname}</Title>
+      <Container>{children}</Container>
     </AppShell>
   );
 }

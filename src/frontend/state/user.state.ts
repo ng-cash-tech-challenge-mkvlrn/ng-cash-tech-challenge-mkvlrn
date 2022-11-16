@@ -11,8 +11,14 @@ const userState = atom<UserState | null>({
   default: null,
 });
 
+const checkingAuthState = atom<boolean>({
+  key: 'checkAuth',
+  default: false,
+});
+
 export const useAuth = () => {
   const [user, setUser] = useRecoilState(userState);
+  const [checkingAuth, setCheckingAuth] = useRecoilState(checkingAuthState);
 
-  return { user, setUser };
+  return { user, setUser, checkingAuth, setCheckingAuth };
 };
