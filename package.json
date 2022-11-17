@@ -16,8 +16,7 @@
     "build:frontend": "npx tsc -p src/frontend/tsconfig.build.json && vite build",
     "build": "yarn build:backend && yarn build:frontend",
     "dev:backend": "npx nodemon src/backend/index.ts",
-    "dev:frontend": "npx vite",
-    "dev": "yarn dev:backend"
+    "dev:frontend": "npx vite"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
