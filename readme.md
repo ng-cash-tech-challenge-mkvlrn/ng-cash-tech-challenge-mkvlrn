@@ -1,5 +1,19 @@
 # ng.cash tech challenge - mkvlrn@gmail.com
 
+- [pré-requisitos](#pré-requisitos)
+- [tl;dr - rodando rapidamente](#tldr---rodando-rapidamente)
+- [o stack](#o-stack)
+  - [estrutura](#estrutura)
+  - [backend](#backend)
+  - [database](#database)
+  - [frontend](#frontend)
+  - [dev/build](#devbuild)
+  - [testes](#testes)
+  - [qualidade](#qualidade)
+- [autenticação](#autenticação)
+- [checklist](#checklist)
+- [faq](#faq)
+
 ## pré-requisitos
 
 - sistema *nix - ubuntu 22.04 (WSL, windows 11) usado
