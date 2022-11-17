@@ -3,6 +3,8 @@ services:
   db:
     image: postgres
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
@@ -13,6 +15,8 @@ services:
     command: >
       --requirepass root
     restart: always
+    ports:
+      - 6379:6379
     volumes:
       - ng-cash-mkvlrn-redis-data:/data
   app:
