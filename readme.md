@@ -200,16 +200,29 @@ no backend o middleware de autenticação também confere o blacklist pra não p
 ## faq
 
 **Q: entregando em 3 dias, huh?**
+
 A: sim, eu mantenho [templates pra vários projetos](https://github.com/mkvlrn/typescript-templates) e adaptar pra um projeto fullstack foi bem simples; não tive que repensar a maioria das coisas
 
+---
+
 **Q: não conseguimos fazer rodar, e aí?**
+
 A: funciona na minha máquina!
 
+---
+
 **Q: você commitou arquivos .env porque...?**
+
 A: facilitar a vida de quem vai ter que desbravar o meu código! eu sei que isso não se faz.. mais do que uma vez...
 
+---
+
 **Q: tank, dps, ou healer?**
+
 A: TANK! 🛡️
 
+---
+
 **Q: quando pode começar?**
+
 A: ontem
