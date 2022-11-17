@@ -8,11 +8,9 @@ import {
   MediaQuery,
   Navbar,
   Text,
-  Title,
   useMantineTheme,
 } from '@mantine/core';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import logo from '#/frontend/assets/logo.png';
 import { NavButtons } from '#/frontend/components/navbuttons';
@@ -25,7 +23,6 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  const location = useLocation();
 
   return (
     <AppShell
@@ -77,7 +74,6 @@ export function Layout({ children }: LayoutProps) {
         </Header>
       }
     >
-      <Title mb='md'>{location.pathname}</Title>
       <Container>{children}</Container>
     </AppShell>
   );

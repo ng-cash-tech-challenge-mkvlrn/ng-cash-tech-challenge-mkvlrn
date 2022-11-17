@@ -9,6 +9,7 @@ import { AuthPage } from '#/frontend/pages/auth/auth';
 import { BalancePage } from '#/frontend/pages/balance';
 import { AppError } from '#/frontend/pages/error';
 import { HomePage } from '#/frontend/pages/home';
+import { TransactionsPage } from '#/frontend/pages/transactions';
 import { useAuth, UserState } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
 
@@ -70,7 +71,7 @@ export function App() {
               path='/transactions'
               element={
                 <RequireAuth>
-                  <div>transactions</div>
+                  <TransactionsPage />
                 </RequireAuth>
               }
             />
