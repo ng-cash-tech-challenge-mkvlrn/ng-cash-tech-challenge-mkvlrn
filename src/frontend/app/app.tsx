@@ -10,6 +10,7 @@ import { BalancePage } from '#/frontend/pages/balance';
 import { AppError } from '#/frontend/pages/error';
 import { HomePage } from '#/frontend/pages/home';
 import { TransactionsPage } from '#/frontend/pages/transactions';
+import { TransferPage } from '#/frontend/pages/transfer';
 import { useAuth, UserState } from '#/frontend/state/user.state';
 import { useAxios } from '#/frontend/utils/axios.util';
 
@@ -63,7 +64,7 @@ export function App() {
               path='/transfer'
               element={
                 <RequireAuth>
-                  <div>transfer</div>
+                  <TransferPage />
                 </RequireAuth>
               }
             />
