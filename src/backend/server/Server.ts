@@ -19,7 +19,13 @@ export class Server {
     this.app.use(
       cors({
         credentials: true,
-        origin: ['http://localhost:3001', 'http://localhost:4001'],
+        origin: [
+          'http://localhost:3001',
+          'http://localhost:4001',
+          'http://localhost:80',
+          'http://localhost',
+          'https://ng-cash-tech-challenge-mkvlrn.azurewebsites.net',
+        ],
       }),
     );
     this.app.use(express.json());
