@@ -16,11 +16,12 @@ export const useAxios = () => {
     (err) => {
       const error = err as AxiosError<AppError>;
       if (error.response?.status === 401) setUser(null);
-      showNotification({
-        title: error.response?.data.statusCode,
-        message: error.response?.data.message,
-        color: 'red',
-      });
+      if (error.response?.data.message !== 'missing jwt token')
+        showNotification({
+          title: error.response?.data.statusCode,
+          message: error.response?.data.message,
+          color: 'red',
+        });
       throw err;
     },
   );
