@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   define: {
-    'process.env': process.env,
+    'process.env.PORT': process.env.PORT,
   },
   base: '',
   build: {
